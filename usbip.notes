@@ -1,0 +1,109 @@
+------ usbip ------
+
+/usr/lib/linux-tools/4.4.0-36-generic/usbip
+modprobe usbip-core
+modprobe usbip-host
+usbipd -D
+
+
+Server:
+1. usbip list 
+2. usbip bind
+
+vim /etc/modules
+:usbip_core
+:usbip_host
+
+Client:
+1. usbip attach
+
+vim /etc/modules
+:vhci_hcd
+
+Usbip-utils 2.0 on Ubuntu:
+https://blog.danman.eu/usbip-utils-2-0-on-ubuntu/
+
+Linux, RPi and USB over IP updated:
+http://blog.3mdeb.com/2015/10/27/linux/
+
+
+
+
+
+
+
+
+
+------- Raw Input --------
+cat /proc/bus/input/devices
+cat /dev/input/eventX | hexdump
+modprobe uinput
+
+sudo apt-get install joystick
+jstest --old /dev/input/js1
+
+
+
+Read from /dev/input:
+http://stackoverflow.com/questions/15949163/read-from-dev-input
+
+Linux input documentation:
+https://www.kernel.org/doc/Documentation/input/input.txt
+
+Python Linux input interface:
+https://github.com/kdart/pycopia/blob/master/core/pycopia/OS/Linux/Input.py
+https://github.com/kdart/pycopia/blob/master/core/pycopia/OS/Linux/event.py
+
+Grab Raw Keyboard Input from Event Device Node (/dev/input/event):
+http://www.thelinuxdaily.com/2010/05/grab-raw-keyboard-input-from-event-device-node-devinputevent/
+
+Changes in /dev/input/ "eventX" device with reboot:
+https://www.raspberrypi.org/forums/viewtopic.php?f=66&t=117154
+
+How can I read input from the hosts keyboard when connected via SSH?:
+http://superuser.com/questions/562434/how-can-i-read-input-from-the-hosts-keyboard-when-connected-via-ssh
+
+Problem reading mouse from /dev/input/events:
+http://unix.stackexchange.com/questions/61652/problem-reading-mouse-from-dev-input-events
+
+Using /dev/inputX devices:
+https://www.raspberrypi.org/forums/viewtopic.php?&t=22213
+
+Evdev Lua module:
+https://github.com/Tangent128/lua-evdev
+
+Reading mouse device:
+http://www.linuxquestions.org/questions/linux-newbie-8/reading-mouse-device-615178/
+
+Joysticks: "/dev/input/js#" versus "/dev/input/event#" woes:
+http://forum.vectorlinux.com/index.php?topic=18087.0
+
+Linux : Reading the Mouse events datas from /dev/input/mouse0:
+http://blog.eihis.com/2014/06/26/linux-reading-the-mouse-events-datas/
+
+Programming joystick with Linux:
+https://scaryreasoner.wordpress.com/2008/02/22/programming-joysticks-with-linux/
+
+Linux Joystick Documentation:
+https://www.kernel.org/doc/Documentation/input/joystick-api.txt
+
+Reading USB input stream on linux:
+http://stackoverflow.com/questions/3737655/reading-usb-input-stream-on-linux
+
+Getting started with uinput: the user level input subsystem:
+http://thiemonge.org/getting-started-with-uinput
+
+How to capture raw HID input on linux?:
+http://stackoverflow.com/questions/873975/how-to-capture-raw-hid-input-on-linux
+
+Linux Joystick driver v2.0.0:
+https://www.kernel.org/doc/Documentation/input/joystick.txt
+
+
+
+
+
+
+
+
+
