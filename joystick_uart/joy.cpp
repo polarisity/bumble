@@ -35,7 +35,7 @@ int UART0_Send(int fd, char *send_buf, int data_len)
 	len = write(fd, send_buf, data_len);
 	if(len == data_len)
 	{
-		return(len);
+	  return(len);
 	}
 	else
 	{
@@ -52,16 +52,28 @@ int main (void) {
   std::clock_t start;
   double duration;
 
-
   //============== JOYSTICK ======================
 
-  int joy_fd, *axis=NULL, num_of_axis=0, num_of_buttons=0, x;
+  int joy_fd = -1, *axis=NULL, num_of_axis=0, num_of_buttons=0, x;
   char *button=NULL, name_of_joystick[80];
   struct js_event js;
 
+  /*
   if( ( joy_fd = open( JOY_DEV , O_RDONLY)) == -1 ) {
     printf( "Couldn't open joystick\n" );
     return -1;
+  }
+  */
+
+  while (joy_fd < 0) {
+    joy_fd = open( JOY_DEV , O_RDONLY))
+    if (joy_fd < 0) {
+      printf("Joystick not found, Retrying in 3 secounds");
+      sleep(3);
+    } else {
+      printf("Joystick Connected");
+      break;
+    }
   }
 
   ioctl( joy_fd, JSIOCGAXES, &num_of_axis );
@@ -116,14 +128,6 @@ int main (void) {
     sleep(3);
 
   }
-    /*
-    try {
-
-      throw "ttySAC0 not found";
-    } catch (char const* errmsg){
-      printf("%s\n", errmsg);
-    }
-    */
 
 
   /* *** Configure Port *** */
