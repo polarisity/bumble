@@ -29,7 +29,7 @@ Ordoid XU4 UART Communication
 
 /* Open File Descriptor */
 
-int UART0_Send(int fd, char *send_buf, int data_len)
+int UART0_Send(int fd, int send_buf, int data_len)
 {
 	int len = 0;
 	len = write(fd, send_buf, data_len);
@@ -217,11 +217,12 @@ int main (void) {
 
 			sprintf(cmd, "%5d", t_left);
 			sprintf(right_string, "%5d\r", t_right);
-			strcat(cmd, right_string);
+			//strcat(cmd, right_string);
 	      /* *** WRITE *** */
 
           //tcflush(UART,TCIFLUSH);
-          UART0_Send(UART, cmd, 11);
+          UART0_Send(UART, atoi(cmd), 2);
+          UART0_Send(UART, atoi(right_string), 2);
 
 
           printf("%s %s  \r", cmd, right_string);
